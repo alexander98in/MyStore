@@ -8,7 +8,6 @@ import { Product } from '../models/product.model';
 export class StoreService {
 
   private myShoppingCart: Product[] = [];
-
   private myCart = new BehaviorSubject<Product[]>([]);
 
   myCart$ = this.myCart.asObservable();

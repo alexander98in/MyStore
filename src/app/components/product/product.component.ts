@@ -8,21 +8,30 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ProductComponent {
 
-  //@Input() product!: Product;
-
   @Input() product: Product = {
     id: '',
     price: 0,
-    image: '',
+    images: [],
     title: '',
-    category: '',
+    category: {
+      id:'',
+      name:'',
+    },
     description: ''
   };
-
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
+
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  constructor() { }
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
+  }
+
+  onShowDetail() {
+    this.showProduct.emit(this.product.id);
   }
 
 }
